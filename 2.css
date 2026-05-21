@@ -142,9 +142,12 @@ body{
   animation:spin 8s linear infinite;
 
   animation-play-state:paused;
+
+  transition:
+  background 1s ease,
+  transform 0.5s ease,
+  box-shadow 1s ease;
 }
-
-
 
 /* INFO */
 
@@ -154,10 +157,18 @@ body{
 
 .info h1{
   font-size:54px;
+
+  transition:
+  opacity 0.4s ease,
+  transform 0.4s ease;
 }
 
 .info p{
   opacity:0.7;
+
+  transition:
+  opacity 0.4s ease,
+  transform 0.4s ease;
 }
 
 /* PROGRESS */
@@ -172,6 +183,8 @@ body{
   border-radius:20px;
 
   overflow:hidden;
+
+  cursor:pointer;
 }
 
 .progress{
@@ -228,7 +241,6 @@ body{
 /* LYRICS */
 
 .lyrics{
-  .lyrics{
 
   margin-top:20px;
 
@@ -260,54 +272,72 @@ body{
 
 }
 
-/* LYRIC ANIMATION */
+/* THEME BUTTON */
 
-@keyframes floatLyrics{
+#themeToggle{
 
-  0%{
-    transform:translateY(0px);
-  }
+  width:45px;
+  height:45px;
 
-  50%{
-    transform:translateY(-5px);
-  }
-
-  100%{
-    transform:translateY(0px);
-  }
-
-}
-}
-
-.disk{
-  width:260px;
-  height:260px;
+  border:none;
 
   border-radius:50%;
 
-  background-size:cover !important;
-  background-position:center !important;
+  background:rgba(255,255,255,0.12);
 
-  border:8px solid rgba(255,255,255,0.08);
+  color:white;
 
-  box-shadow:
-  0 0 40px rgba(255,255,255,0.08);
+  font-size:18px;
 
-  animation:spin 8s linear infinite;
+  cursor:pointer;
 
-  animation-play-state:paused;
+  backdrop-filter:blur(10px);
 
-  transition:
-  background 1s ease,
-  transform 0.5s ease,
-  box-shadow 1s ease;
+  transition:0.3s ease;
 }
 
-.info h1,
-.info p{
-  transition:
-  opacity 0.4s ease,
-  transform 0.4s ease;
+#themeToggle:hover{
+
+  transform:scale(1.1);
+
+}
+
+/* DAY MODE */
+
+body.day-mode{
+
+  color:black;
+
+}
+
+body.day-mode .controls button{
+
+  background:rgba(255,255,255,0.5);
+
+  color:black;
+
+}
+
+body.day-mode #themeToggle{
+
+  background:rgba(255,255,255,0.7);
+
+  color:black;
+
+}
+
+body.day-mode .progress-container{
+
+  background:rgba(0,0,0,0.1);
+
+}
+
+body.day-mode .logo,
+body.day-mode .clock,
+body.day-mode .lyrics{
+
+  color:black;
+
 }
 
 /* ANIMATIONS */
@@ -336,14 +366,14 @@ body{
 
 }
 
-@keyframes float{
+@keyframes floatLyrics{
 
   0%{
     transform:translateY(0px);
   }
 
   50%{
-    transform:translateY(-10px);
+    transform:translateY(-5px);
   }
 
   100%{
@@ -363,6 +393,11 @@ body{
   .disk{
     width:210px;
     height:210px;
+  }
+
+  .controls button{
+    width:60px;
+    height:60px;
   }
 
 }
