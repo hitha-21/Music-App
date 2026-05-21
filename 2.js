@@ -25,6 +25,9 @@ const lyric = document.getElementById("lyric");
 const progressContainer =
 document.querySelector(".progress-container");
 
+const themeToggle =
+document.getElementById("themeToggle");
+
 /* SONGS */
 
 const songs = [
@@ -52,17 +55,7 @@ const songs = [
 
     {time:30,text:"To whom much is given much is tested"},
 
-    {time:36,text:"Get arrested guess until he get the message"},
-
-    {time:42,text:"I feel the pressure under more scrutiny"},
-
-    {time:48,text:"And what I do? Act more stupidly"},
-
-    {time:54,text:"Bought more jewelry more Louis V"},
-
-    {time:60,text:"My mama couldn't get through to me"},
-
-    {time:66,text:"The drama people suing me"}
+    {time:36,text:"Get arrested guess until he get the message"}
 
   ]
 
@@ -87,13 +80,7 @@ const songs = [
 
     {time:23,text:"Lost inside this empty room"},
 
-    {time:30,text:"Tell me what you're thinking now"},
-
-    {time:38,text:"Can you hear the silence too"},
-
-    {time:46,text:"I keep staring at reflections"},
-
-    {time:54,text:"Trying to find the truth"}
+    {time:30,text:"Tell me what you're thinking now"}
 
   ]
 
@@ -118,13 +105,7 @@ const songs = [
 
     {time:21,text:"What was all of it for?"},
 
-    {time:28,text:"Oh we don't talk anymore"},
-
-    {time:35,text:"Like we used to do"},
-
-    {time:42,text:"I just heard you found the one"},
-
-    {time:50,text:"You've been looking for"}
+    {time:28,text:"Oh we don't talk anymore"}
 
   ]
 
@@ -147,15 +128,7 @@ const songs = [
 
     {time:16,text:"Calma, mi vida, con calma"},
 
-    {time:24,text:"Que nada hace falta si estamos juntitos bailando"},
-
-    {time:32,text:"Vamos pa' la playa"},
-
-    {time:38,text:"Pa' curarte el alma"},
-
-    {time:44,text:"Cierra la pantalla"},
-
-    {time:50,text:"Abre la medalla"}
+    {time:24,text:"Que nada hace falta si estamos juntitos bailando"}
 
   ]
 
@@ -178,15 +151,7 @@ const songs = [
 
     {time:17,text:"Dark clouds inside my head tonight"},
 
-    {time:25,text:"Everything feels lonely"},
-
-    {time:33,text:"Maybe I'm just sadderdaze"},
-
-    {time:41,text:"Lost inside this haze"},
-
-    {time:49,text:"Trying to escape myself"},
-
-    {time:57,text:"But I always stay"}
+    {time:25,text:"Everything feels lonely"}
 
   ]
 
@@ -200,6 +165,8 @@ let currentSong = 0;
 
 let isPlaying = false;
 
+let currentLyricIndex = -1;
+
 /* LOAD SONG */
 
 function loadSong(index){
@@ -210,15 +177,16 @@ function loadSong(index){
 
   subtitle.innerHTML = song.artist;
 
-  lyric.innerHTML =
-  "Loading lyrics...";
+  lyric.innerHTML = "Loading lyrics...";
+
+  currentLyricIndex = -1;
 
   disk.style.background =
   `url(${song.image}) center/cover`;
 
   audio.src = song.audio;
 
-  /* AUTO COLOR THEME */
+  /* AUTO COLOR */
 
   const img = new Image();
 
@@ -236,11 +204,7 @@ function loadSong(index){
 
     canvas.height = img.height;
 
-    ctx.drawImage(
-      img,
-      0,
-      0
-    );
+    ctx.drawImage(img,0,0);
 
     const data =
     ctx.getImageData(
@@ -306,9 +270,7 @@ function loadSong(index){
     `
     0 0 60px ${rgb}
     `;
-
   };
-
 }
 
 /* PLAY */
@@ -323,7 +285,6 @@ function playSong(){
   "running";
 
   audio.play();
-
 }
 
 /* PAUSE */
@@ -338,10 +299,9 @@ function pauseSong(){
   "paused";
 
   audio.pause();
-
 }
 
-/* NEXT SONG */
+/* NEXT */
 
 function nextSong(){
 
@@ -352,15 +312,12 @@ function nextSong(){
     currentSong = 0;
   }
 
-  animateSongChange();
-
   loadSong(currentSong);
 
   playSong();
-
 }
 
-/* PREVIOUS SONG */
+/* PREVIOUS */
 
 function prevSong(){
 
@@ -371,12 +328,9 @@ function prevSong(){
     currentSong = songs.length - 1;
   }
 
-  animateSongChange();
-
   loadSong(currentSong);
 
   playSong();
-
 }
 
 /* PLAY BUTTON */
@@ -394,21 +348,21 @@ playBtn.addEventListener("click",()=>{
 
 });
 
-/* NEXT BUTTON */
+/* NEXT */
 
 nextBtn.addEventListener(
   "click",
   nextSong
 );
 
-/* PREVIOUS BUTTON */
+/* PREVIOUS */
 
 prevBtn.addEventListener(
   "click",
   prevSong
 );
 
-/* REAL PROGRESS BAR */
+/* PROGRESS BAR */
 
 audio.addEventListener(
   "timeupdate",
@@ -423,11 +377,11 @@ audio.addEventListener(
 
 });
 
-/* SYNC LYRICS */
+/* LYRICS */
 
-let currentLyricIndex = -1;
-
-audio.addEventListener("timeupdate",()=>{
+audio.addEventListener(
+  "timeupdate",
+  ()=>{
 
   const currentTime =
   audio.currentTime;
@@ -459,9 +413,6 @@ audio.addEventListener("timeupdate",()=>{
 
       lyric.style.opacity = "0";
 
-      lyric.style.transform =
-      "translateY(15px)";
-
       setTimeout(()=>{
 
         lyric.innerHTML =
@@ -469,18 +420,14 @@ audio.addEventListener("timeupdate",()=>{
 
         lyric.style.opacity = "1";
 
-        lyric.style.transform =
-        "translateY(0px)";
-
-      },180);
+      },150);
 
     }
-
   }
 
 });
 
-/* CLICK TO SEEK */
+/* SEEK */
 
 progressContainer.addEventListener(
   "click",
@@ -489,7 +436,8 @@ progressContainer.addEventListener(
   const width =
   progressContainer.clientWidth;
 
-  const clickX = e.offsetX;
+  const clickX =
+  e.offsetX;
 
   const duration =
   audio.duration;
@@ -503,13 +451,10 @@ progressContainer.addEventListener(
 
 audio.addEventListener(
   "ended",
-  ()=>{
+  nextSong
+);
 
-  nextSong();
-
-});
-
-/* KEYBOARD CONTROLS */
+/* KEYBOARD */
 
 document.addEventListener(
   "keydown",
@@ -527,52 +472,19 @@ document.addEventListener(
 
       playSong();
     }
-
   }
 
   if(e.code === "ArrowRight"){
 
     nextSong();
-
   }
 
   if(e.code === "ArrowLeft"){
 
     prevSong();
-
   }
 
 });
-
-/* SONG TRANSITION */
-
-function animateSongChange(){
-
-  title.style.opacity = "0";
-
-  subtitle.style.opacity = "0";
-
-  title.style.transform =
-  "translateY(10px)";
-
-  subtitle.style.transform =
-  "translateY(10px)";
-
-  setTimeout(()=>{
-
-    title.style.opacity = "1";
-
-    subtitle.style.opacity = "1";
-
-    title.style.transform =
-    "translateY(0px)";
-
-    subtitle.style.transform =
-    "translateY(0px)";
-
-  },200);
-
-}
 
 /* CLOCK */
 
@@ -599,6 +511,31 @@ document.addEventListener(
     ${e.clientX - 250}px,
     ${e.clientY - 250}px
   )`;
+
+});
+
+/* DAY/NIGHT MODE */
+
+themeToggle.addEventListener(
+  "click",
+  ()=>{
+
+  body.classList.toggle(
+    "day-mode"
+  );
+
+  if(
+    body.classList.contains(
+      "day-mode"
+    )
+  ){
+
+    themeToggle.innerHTML = "🌙";
+
+  }else{
+
+    themeToggle.innerHTML = "☀️";
+  }
 
 });
 
