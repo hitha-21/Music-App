@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+  <title>Aesthetic Music Player</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="2.css">
+
+  <!-- GOOGLE FONT -->
+  <link rel="preconnect"
+  href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- MOUSE GLOW -->
+  <div class="mouse-glow"></div>
+
+  <!-- PARTICLES -->
+  <div class="particles"></div>
+
+  <!-- MAIN SCREEN -->
+  <main class="screen">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+
+      <div class="logo">
+        NIGHT MODE
+      </div>
+
+      <div class="clock" id="clock">
+        00:00
+      </div>
+      
+
+    </div>
+
+    <!-- MUSIC PLAYER -->
+    <section class="music-area">
+
+      <!-- VINYL -->
+      <div class="vinyl-container">
+
+        <div class="disk"></div>
+
+      </div>
+
+      <!-- SONG INFO -->
+      <div class="info">
+
+        <h1>Loading...</h1>
+
+        <p>Artist</p>
+
+      </div>
+
+      <!-- PROGRESS BAR -->
+      <div class="progress-container">
+
+        <div class="progress"></div>
+
+      </div>
+
+      <!-- CONTROLS -->
+      <div class="controls">
+
+        <button class="prev">
+          ⏮
+        </button>
+
+        <button class="play">
+          ▶
+        </button>
+
+        <button class="next">
+          ⏭
+        </button>
+
+      </div>
+
+      <div class="lyrics">
+
+  <p id="lyric">
+    Loading lyrics...
+  </p>
+
+</div>
+
+    </section>
+
+  </main>
+
+  <!-- AUDIO -->
+  <audio id="audio"></audio>
+
+  <!-- MAIN JS -->
+  <script src="2.js"></script>
+
+</body>
+
+</html>
