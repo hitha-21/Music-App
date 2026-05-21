@@ -36,7 +36,7 @@ const songs = [
 
   image:"kanye.jpg",
 
-  audio:"kanye_west (1).mp3",
+  audio:"kanye_west.mp3",
 
   lyrics:[
 
@@ -75,7 +75,7 @@ const songs = [
 
   image:"reflections.jpg",
 
-  audio:"reflections (1).mp3",
+  audio:"reflections.mp3",
 
   lyrics:[
 
@@ -106,7 +106,7 @@ const songs = [
 
   image:"charlie.jpg",
 
-  audio:"charlie (1).mp3",
+  audio:"charlie.mp3",
 
   lyrics:[
 
@@ -137,7 +137,7 @@ const songs = [
 
   image:"calma.jpg",
 
-  audio:"calma (1).mp3",
+  audio:"calma.mp3",
 
   lyrics:[
 
@@ -168,7 +168,7 @@ const songs = [
 
   image:"sad.jpg",
 
-  audio:"sad (1).mp3",
+  audio:"sad.mp3",
 
   lyrics:[
 
