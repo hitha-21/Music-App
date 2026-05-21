@@ -25,9 +25,6 @@ const lyric = document.getElementById("lyric");
 const progressContainer =
 document.querySelector(".progress-container");
 
-const themeToggle =
-document.getElementById("themeToggle");
-
 /* SONGS */
 
 const songs = [
@@ -511,31 +508,6 @@ document.addEventListener(
     ${e.clientX - 250}px,
     ${e.clientY - 250}px
   )`;
-
-});
-
-/* DAY/NIGHT MODE */
-
-themeToggle.addEventListener(
-  "click",
-  ()=>{
-
-  body.classList.toggle(
-    "day-mode"
-  );
-
-  if(
-    body.classList.contains(
-      "day-mode"
-    )
-  ){
-
-    themeToggle.innerHTML = "🌙";
-
-  }else{
-
-    themeToggle.innerHTML = "☀️";
-  }
 
 });
 
