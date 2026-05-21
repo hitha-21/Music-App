@@ -34,9 +34,9 @@ const songs = [
 
   artist:"Kanye West",
 
-  image:"images/kanye.jpg",
+  image:"kanye.jpg",
 
-  audio:"Songs/kanye_west (1).mp3",
+  audio:"kanye_west (1).mp3",
 
   lyrics:[
 
@@ -73,9 +73,9 @@ const songs = [
 
   artist:"The Neighbourhood",
 
-  image:"images/reflections.jpg",
+  image:"reflections.jpg",
 
-  audio:"Songs/reflections (1).mp3",
+  audio:"reflections (1).mp3",
 
   lyrics:[
 
@@ -104,9 +104,9 @@ const songs = [
 
   artist:"Charlie Puth",
 
-  image:"images/charlie.jpg",
+  image:"charlie.jpg",
 
-  audio:"Songs/charlie (1).mp3",
+  audio:"charlie (1).mp3",
 
   lyrics:[
 
@@ -135,9 +135,9 @@ const songs = [
 
   artist:"Pedro Capó & Farruko",
 
-  image:"images/calma.jpg",
+  image:"calma.jpg",
 
-  audio:"Songs/calma (1).mp3",
+  audio:"calma (1).mp3",
 
   lyrics:[
 
@@ -166,9 +166,9 @@ const songs = [
 
   artist:"The Neighbourhood",
 
-  image:"images/sad.jpg",
+  image:"sad.jpg",
 
-  audio:"Songs/sad (1).mp3",
+  audio:"sad (1).mp3",
 
   lyrics:[
 
